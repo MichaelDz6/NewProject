@@ -62,10 +62,22 @@ public class Runner {
 	
 	public void matchOrders() {
 		boolean match = true;
+		int iL = 0, iS = 0;
 		
 		while(match){
-			if(ordersL.get(0).getPrice() >= ordersS.get(0).getPrice()){
-				
+			if(ordersL.get(iL).getPrice() >= ordersS.get(iS).getPrice()){
+				if(ordersL.get(iL).getVolume() != ordersS.get(iS).getVolume()){
+					if(ordersL.get(iL).getVolume() > ordersS.get(iS).getVolume()){
+						ordersS.remove(0);
+						ordersL.get(iL).setVolume(ordersL.get(iL).getVolume() - ordersS.get(iS).getVolume());
+					}else{
+						ordersL.remove(0);
+						ordersS.get(iS).setVolume(ordersS.get(iS).getVolume() - ordersL.get(iL).getVolume());
+					}
+				}else{
+					ordersL.remove(0);
+					ordersS.remove(0);
+				}
 			}else{
 				match = false;
 			}
