@@ -63,6 +63,8 @@ public class Order {
 		this.price = price;
 	}
 	
-	
+	public String printOrder() {
+		return "SECID: " + securityID + ", Position = " + position + ", Time = " + time + ", Price = " + price + ", Volume = " + volume; 
+	}
 
 }
